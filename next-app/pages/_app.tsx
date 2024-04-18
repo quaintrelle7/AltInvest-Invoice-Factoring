@@ -12,7 +12,7 @@ import '@rainbow-me/rainbowkit/styles.css'
 import {  optimism } from 'wagmi/chains';
 import { Chain } from '@rainbow-me/rainbowkit';
 import Layout from '@/components/Layout'
-
+// https://wagmi.sh/core/api/chains
 const chains: readonly [Chain, ...Chain[]] = [
   {
     ...mainnet,

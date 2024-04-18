@@ -1,19 +1,32 @@
 import {useDisclosure, Input, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, ModalFooter, Container, Textarea} from '@chakra-ui/react'
 import React, {useState} from 'react'
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 function ListNFTForm() {
    const { isOpen, onOpen, onClose } = useDisclosure();
-
+    const initialFormData = {
+        company: "",
+		invoiceAmount: "",
+		discountRate:"",
+		description: ""
+    }
    const [formData, setFormData] = useState({
-		name: "",
-		username: "",
-		age: "",
-		address: "",
-		aadhar: "",
-		pan: "",
-		email: "",
-		password: "",
+		company: "",
+		invoiceAmount: "",
+		discountRate: "",
+		description: "",
+        invoiceDate:"",
+        dueDate:"",
+        billedTo:"",
+        withdrawalDate: ""
 	});
+
+    const [fileData, setFileData] = useState({
+        file: null});
+
+    
 
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = event.target;
@@ -21,14 +34,19 @@ function ListNFTForm() {
 			...prevFormData,
 			[name]: value,
 		}));
+
+        console.log(formData);  
 	};
 
-	const handleFileUpload = () => {
+	const handleFileUpload = async(e:React.FormEvent) => {
 		// if (selectedFile) {
 		// 	console.log("Uploading file:", selectedFile);
 		// } else {
 		// 	console.log("No file selected");
 		// }
+
+        e.preventDefault();
+        const files = e.target;
 	};
 
 	const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +54,26 @@ function ListNFTForm() {
 		// let fileHash = await sendFileToIPFS(file);
 		// console.log(fileHash);
 		// setHash(fileHash);
+
+    //     const form = event.target;
+    // const files = (form[0]).files;
+
+      if (!file ) {
+      return alert("No file selected");
+      
+       // upload files
+    //    const result = await ipfs.add(file);
+
+    //    setFileData([
+    //   ...,
+    //   {
+    //     cid: result.cid,
+    //     path: result.path,
+    //   },
+    // ]);
+
+    }
+
 	};
 
 	const handleRegistration = async (e: React.FormEvent) => {
@@ -60,17 +98,23 @@ function ListNFTForm() {
 		// console.log(result.data);
 		// setHash("");
 		// onClose();
+        window.alert("submitted")
+        setFormData({
+            ...initialFormData
+        })
+
+        onClose();
 	};
 
 
   return (
     <>
-      <Button onClick={onOpen}>List NFT</Button>
+      <Button colorScheme='telegram' onClick={onOpen}>List Company</Button>
      
       <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent bg= "brand.ternary" color={"brand.secondary"}>
-          <ModalHeader>List Company NFT</ModalHeader>
+          <ModalHeader>List Company</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
 
@@ -80,29 +124,75 @@ function ListNFTForm() {
 								marginBottom="15px"
 								marginTop="2px"
 								type="text"
-								name="name"
-								value={formData.name}
+								name="company"
+								value={formData.company}
 								onChange={handleInputChange}
 								required
 							/>
 
-							<label htmlFor="title">Title</label>
+                            <label htmlFor="billedTo">Inoice Billed To</label>
 							<Input
 								marginBottom="15px"
 								marginTop="2px"
 								type="text"
-								name="username"
-								value={formData.username}
+								name="billedTo"
+								value={formData.billedTo}
 								onChange={handleInputChange}
 								required
 							/>
-							<label htmlFor="floorPrice">Floor Price</label>
+
+							<label htmlFor="invoiceAmount">Amount on Invoice</label>
 							<Input
 								marginBottom="15px"
 								marginTop="2px"
 								type="number"
-								name="age"
-								value={formData.age}
+								name="invoiceAmount"
+								value={formData.invoiceAmount}
+								onChange={handleInputChange}
+								required
+							/>
+							<label htmlFor="discountRate">Discount in percentage</label>
+							<Input
+								marginBottom="15px"
+								marginTop="2px"
+								type="number"
+								name="discountRate"
+								value={formData.discountRate}
+								onChange={handleInputChange}
+								required
+							/>
+                            <label htmlFor="invoiceDate">Invoice Date</label>
+							<Input
+								marginBottom="15px"
+								marginTop="2px"
+								type="text"
+								name="invoiceDate"
+                                placeholder='DD/MM/YYYY'
+								value={formData.invoiceDate}
+								onChange={handleInputChange}
+								required
+							/>
+
+                            <label htmlFor="dueDate">Due Date</label>
+							<Input
+								marginBottom="15px"
+								marginTop="2px"
+								type="text"
+								name="dueDate"
+                                placeholder='DD/MM/YYYY'
+								value={formData.dueDate}
+								onChange={handleInputChange}
+								required
+							/>
+
+                            <label htmlFor="withdrawalDate">Withdrawal Date</label>
+							<Input
+								marginBottom="15px"
+								marginTop="2px"
+								type="text"
+								name="withdrawalDate"
+                                placeholder='DD/MM/YYYY'
+								value={formData.withdrawalDate}
 								onChange={handleInputChange}
 								required
 							/>
@@ -111,21 +201,13 @@ function ListNFTForm() {
 							<Textarea
 								marginBottom="15px"
 								marginTop="2px"
-								name="address"
-								value={formData.address}
-                                onChange={()=>{}}
-							/>
-							<label htmlFor="aadhar">Aadhar</label>
-							<Input
-								marginBottom="15px"
-								marginTop="2px"
-								type="text"
-								name="aadhar"
-								value={formData.aadhar}
-								onChange={handleInputChange}
+								name="description"
+								value={formData.description}
+                                onChange={handleInputChange}
+                                required={true}
 							/>
 							
-							<label>Upload Legal Docs</label>
+							<label>Upload Invoices</label>
 							<Input
 								marginBottom="15px"
 								marginTop="2px"
@@ -134,16 +216,7 @@ function ListNFTForm() {
 								onChange={handleFileChange}
 							/>
 							<button onClick={handleFileUpload} />
-                            	<label>Upload Image</label>
-							<Input
-								marginBottom="15px"
-								marginTop="2px"
-								type="file"
-								padding="1"
-								onChange={handleFileChange}
-							/>
-							<button onClick={handleFileUpload} />
-
+{/*                            
 							<label htmlFor="walletAddress">WalletAddress</label>
 							<Input
 								marginBottom="15px"
@@ -152,10 +225,12 @@ function ListNFTForm() {
 								name="email"
 								value={formData.email}
 								onChange={handleInputChange}
-							/>
+							/> */}
+
+    {/* <DatePicker  name="invoiceDate" value={formData.invoiceDate} onChange={handleInputChange} /> */}
 
                            <ModalFooter>
-                            <Button colorScheme='blue' mr={3}>
+                            <Button type="submit" colorScheme='blue' mr={3}>
                               Submit
                             </Button>
                             <Button onClick={onClose}>Cancel</Button>

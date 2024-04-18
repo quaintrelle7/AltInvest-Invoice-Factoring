@@ -1,40 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Will maintain all the money in smart contract, seems more like a crowdfunding now.
 
-## Getting Started
+If I go in the direction of invoice discounting, then one can be verifying invoices, etc. And then people can invest their amount and then the invoice seller can withdraw the amount
 
-First, run the development server:
+Orderbook can be used to keep the track of the transactions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+In case of invoice discounting, all the money will be hold by the smart contract and the money to the user will be provided when they receive the whole invoice amount - or can make it half-half. Investing in half.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Like how much money they are claiming in the invoice. At how much discount they are willing to sell their invoices.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+From dropdown they can select the discounting amount.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Upload invoices - Once the company uploaded this data, we'll store the data on blockchain.
+2. Will store the file on IPFS for now and in the blockchain we'll store the file hash
+3. There will be a contract address where I'll store all the data. And when users decide to invest for invoice discounting, they'll pay the amount to the contract and then seller can withdraw amount from smart contract.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Seems more like a crowdfunding. What's the differentiation factor?
+The idea itself.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Major: Verfication of invoices using the technology.
 
-## Learn More
+Invoices are “tokenized”, which means that their value is converted into digital tokens on a specific Blockchain, allowing them to be transferred and stored. This process ensures that tokens are secured from tampering and accessible to only those with required permissions. Tokens can be fungible and non-fungible depending on the type of data being tokenized. In the case of Invoice factoring, invoices are converted into Non-Fungible Tokens (NFTs), which guarantee that they are unique and immutable and securely store data such as the original creator of the invoice.
 
-To learn more about Next.js, take a look at the following resources:
+https://www.mfw4a.org/blog/invoice-factoring-through-blockchain-harnessing-technology-dividends
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+here is an opportunity to develop a credit scoring system based on reliable data, which can accurately reflect companies' creditworthiness and give investors the necessary comfort to invest.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Invoice factoring involves selling a company’s outstanding invoices to a third party — usually a micro-financing institution (MFI). The financier typically compensates 80% to 90% right away, then transfers the remainder minus their fee after the invoice has been paid in full.
 
-## Deploy on Vercel
+ Analysts expect this thriving market, estimated at $1,946.5 billion in 2021, to reach as much as $4,618.9 billion by 2031.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+ read://https_unicsoft.com/?url=https%3A%2F%2Funicsoft.com%2Fblog%2Finvoice-factoring-with-blockchain-pros-and-cons-plus-a-case-study%2F
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Possibility of fraud. Factors with a high volume of invoices have a hard time following the paper trail. The inability to reliably verify the identities of the buyer and seller is a major issue. Resorting to random checks, they risk financing fraudulent invoices. Also, some invoices may have already been factored — a phenomenon called “double pledging.”
+
+The added expenses of the security and credit checks can make low-value invoices less attractive for factoring companies. This further limits the options of small businesses looking for financing.
+
+All parties — the buyer, the seller, and the factor — use a digital ledger that stores their information and utilizes smart contracts to define the rules of the game.
+When the buyer and the seller agree on the contract terms, the invoices are tokenized — turned into records on the blockchain. From this moment on, these records can be accessed and tracked by parties with the necessary privileges.
+The factor can easily verify the authenticity of the invoices, as blockchain is transparent and immutable. This can instantly prevent double pledging and fraud.
+Just as easily, the identities of the buyer and seller, as well as their credit history, can be checked on the blockchain ledger. No need for lengthy approval procedures, as all the relevant information is readily available.
+Independent nodes on the blockchain will oversee the transaction, and smart contracts will automatically trigger actions when respective terms are fulfilled. 
+The transfer of funds and the reception of goods are instantly recorded and become blocks on the chain, easy to access and trace. None of the records can be changed accidentally or on purpose without the parties’ consent.
+If the factor uses an integrated blockchain-based payment ecosystem, the funds move momentarily and without intermediaries. The result? Lower transaction costs and better value for the client.
+When the invoice is paid in full, funds are automatically transferred to the client’s and factor’s accounts (thanks to smart contracts).
+To sum up, integrating blockchain into invoice factoring can streamline every aspect of the B2B financing process. Let’s zero in on how each participant can benefit from the technology.
+
+
