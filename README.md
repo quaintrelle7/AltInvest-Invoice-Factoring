@@ -18,22 +18,7 @@
 
 Signature request
 Only sign this message if you fully understand the content and trust the requesting site.
-You are signing:
-Message:
-Welcome to OpenSea!
-
-Click to sign in and accept the OpenSea Terms of Service (https://opensea.io/tos) and Privacy Policy (https://opensea.io/privacy).
 
 This request will not trigger a blockchain transaction or cost any gas fees.
-
-Wallet address:
-0x5f54f16b2d6fb43c4f096fca8d896761cfb7c8dc
-
-Nonce:
-b664a1b4-dba8-49a8-b550-0629760f0e95
-
-
-//To-Do
-Restrict Login URLs - Pop-Up the wallet
 
 
